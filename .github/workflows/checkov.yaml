@@ -1,0 +1,30 @@
+name: checkov
+on:
+  pull_request:
+  Push:
+    branches:
+      - main
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run checkov
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: code/
+
+      - name: Upload SARIF file
+        uses: GitHub/codeql-action/upload-sarif@v2
+
+        if: success() || failure()
+        with: 
+         sarif_file: resulta.sarif
+         
+          
