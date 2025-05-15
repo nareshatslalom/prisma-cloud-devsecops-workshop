@@ -1,7 +1,7 @@
 name: checkov
 on:
   pull_request:
-  Push:
+  push:
     branches:
       - main
 jobs:
