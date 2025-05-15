@@ -25,6 +25,6 @@ jobs:
 
         if: success() || failure()
         with: 
-         sarif_file: resulta.sarif
+         sarif_file: results.sarif
          
           
